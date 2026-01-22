@@ -52,7 +52,7 @@ def create_documents(articles: List[Dict[str, Any]]) -> List[Document]:
             "article_id": str(article.get("id")),
             "title": article.get("title"),
             "url": article.get("url"),
-            "topics": article.get("topics", []),  # This is crucial for filtering
+            "topics": article.get("topics", []),
             "updated_at": process_timestamp(article.get("updated_at", 0)),
             "source": "FieldFlo Help Center"
         }
@@ -117,7 +117,7 @@ def main():
     
     print("✅ Ingestion Complete.")
     
-    # Instructions for Index Creation (Crucial for the assignment)
+    # Instructions for Index Creation
     print("\n" + "="*60)
     print("IMPORTANT: Create this Search Index in MongoDB Atlas:")
     print("="*60)

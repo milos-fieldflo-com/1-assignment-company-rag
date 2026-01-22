@@ -27,31 +27,31 @@ TEST_CASES = [
         "id": "archive_ambiguity",
         "question": "How do I archive?",
         "filter_topics": ["Certification", "Certificates"],
-        "description": "Target: Certificates. Naive RAG retrieves Leads. Delta: +0.60"
+        "description": "Target: Certificates."
     },
     {
         "id": "groups_ambiguity",
         "question": "How do I add a new group?",
         "filter_topics": ["Scheduling"], 
-        "description": "Target: Scheduling Groups. Naive RAG retrieves Email Groups. Delta: +0.40"
+        "description": "Target: Scheduling Groups."
     },
     {
         "id": "export_ambiguity",
         "question": "How do I export the data?",
         "filter_topics": ["Inventory"],
-        "description": "Target: Inventory Export. Naive RAG retrieves Payroll Exports. Delta: +0.20"
+        "description": "Target: Inventory Export."
     },
     {
         "id": "profile_ambiguity",
         "question": "How do I edit the profile?",
         "filter_topics": ["Employees"],
-        "description": "Target: Employee Profile. Naive RAG retrieves Personal Profiles. Delta: +0.20"
+        "description": "Target: Employee Profile."
     },
     {
         "id": "schedule_verify",
         "question": "How do I verify the schedule?",
         "filter_topics": ["Scheduling"],
-        "description": "Target: Scheduling Verification. Naive RAG retrieves Timesheet Verification. Delta: +0.20"
+        "description": "Target: Scheduling Verification."
     }
 ]
 
@@ -78,7 +78,6 @@ def calculate_precision(question: str, docs: list, topics: list = None) -> float
     relevant_count = 0
     print(f"   Judging {len(docs)} documents against context: {topics if topics else 'General'}...")
     for doc in docs:
-        # CRITICAL FIX: Pass the topics to the evaluator
         is_relevant = evaluate_relevance(question, doc.page_content, topics)
         if is_relevant:
             relevant_count += 1
