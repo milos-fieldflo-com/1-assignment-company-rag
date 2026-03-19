@@ -47,10 +47,10 @@ def retrieve_documents(query: str, topics: Optional[List[str]] = None, k: int = 
     filters = build_filter(topics)
     
     if filters:
-        print(f"🔍 Searching with filters: {filters}")
+        print(f"Searching with filters: {filters}")
         results = vector_store.similarity_search(query, k=k, pre_filter=filters)
     else:
-        print("🔍 Searching without filters (Naive RAG)")
+        print("Searching without filters (Naive RAG)")
         results = vector_store.similarity_search(query, k=k)
         
     return results

@@ -91,7 +91,7 @@ def setup_mongodb():
     return client, db[COLLECTION_NAME]
 
 def main():
-    print("🚀 Starting Ingestion Pipeline...")
+    print("Starting Ingestion Pipeline...")
     
     # 1. Load Data
     source_file = "help_rag_ready_published_only.json"
@@ -115,7 +115,7 @@ def main():
         index_name=INDEX_NAME
     )
     
-    print("✅ Ingestion Complete.")
+    print("Ingestion Complete.")
     
     # Instructions for Index Creation
     print("\n" + "="*60)

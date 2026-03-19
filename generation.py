@@ -55,7 +55,7 @@ def generate_answer(
     llm = ChatOpenAI(model=MODEL_NAME, temperature=0)
     chain = prompt | llm | StrOutputParser()
     
-    print("🤖 Generating answer...\n")
+    print("Generating answer...\n")
     answer = chain.invoke({
         "context": context_text,
         "question": question
@@ -77,7 +77,7 @@ def print_deduplicated_sources(docs):
             unique_sources.append(doc)
             seen_titles.add(title)
     
-    print(f"\n📚 Sources ({len(unique_sources)} unique articles):")
+    print(f"\nSources ({len(unique_sources)} unique articles):")
     for doc in unique_sources:
         title = doc.metadata.get('title', 'Unknown')
         topics = doc.metadata.get('topics', [])
@@ -111,11 +111,11 @@ def interactive_mode():
             # Handle Commands
             if user_input.lower() == 'clear':
                 active_topics = []
-                print("✅ All filters cleared")
+                print("All filters cleared")
                 continue
 
             if user_input.lower() == 'filters':
-                print(f"🔍 Active Topics: {active_topics if active_topics else 'None'}")
+                print(f"Active Topics: {active_topics if active_topics else 'None'}")
                 continue
 
             if user_input.lower().startswith('topic:'):
@@ -123,7 +123,7 @@ def interactive_mode():
                 if len(parts) > 1:
                     new_topic = parts[1].strip()
                     active_topics = [new_topic] 
-                    print(f"✅ Topic filter set to: {active_topics}")
+                    print(f"Topic filter set to: {active_topics}")
                 continue
 
             # Handle Question
@@ -173,7 +173,7 @@ def main():
         }
     ]
 
-    print("\n📋 Example Queries with Filters:")
+    print("\nExample Queries with Filters:")
     for i, ex in enumerate(example_queries, 1):
         print(f"  {i}. {ex['q']}... ({ex['desc']})")
 
@@ -184,8 +184,8 @@ def main():
         interactive_mode()
     elif choice in ['1', '2', '3', '4']:
         ex = example_queries[int(choice) - 1]
-        print(f"\n📝 Question: {ex['q']}")
-        print(f"📁 Context: Filter by topics={ex['topics']}")
+        print(f"\nQuestion: {ex['q']}")
+        print(f"Context: Filter by topics={ex['topics']}")
         
         result = generate_answer(ex['q'], topics=ex['topics'])
         
@@ -198,7 +198,7 @@ def main():
             
     elif choice:
         # Standard question without filters
-        print(f"\n📝 Question: {choice}")
+        print(f"\nQuestion: {choice}")
         result = generate_answer(choice)
         print("-" * 50)
         print("Answer:")

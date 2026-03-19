@@ -25,7 +25,7 @@ Respond ONLY with 'YES' or 'NO'."""
 TEST_CASES = [
     {
         "id": "archive_ambiguity",
-        "question": "How do I archive?",
+        "question": "How do I archive this?",
         "filter_topics": ["Certification", "Certificates"],
         "description": "Target: Certificates."
     },
